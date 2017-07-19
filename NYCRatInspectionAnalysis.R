@@ -10,7 +10,7 @@ library(ggplot2)
 library(lubridate)
 library(dplyr)
 
-rodent = read.csv("~/Desktop/Kelly Y Xie")
+rodent = read.csv("data/Kelly Y Xie")
 
 # parses inspection dates
 parseDate = parse_date_time(rodent$INSPECTION_DATE, c("%m/%d/%Y %H:%M:%S"))
@@ -218,7 +218,7 @@ topAfter = unique(inner_join(topAfter,tempAfter,by="ZIP_CODE") %>% group_by(ZIP_
 print(topAfter[1:20,])
 
 # top 20 zip codes for rat activity during Hurricane Sandy
-sandy = read.csv("~/Desktop/sandyrelated.csv") # Hurricane Sandy 311 database
+sandy = read.csv("data/sandyrelated.csv") # Hurricane Sandy 311 database
 sandy = subset(sandy, Complaint.Type=="Rodent" & Descriptor!="Condition Attracting Rodents")
 sandy$ones = 1
 topSandy = sandy %>% group_by(Incident.Zip) %>% 
@@ -232,7 +232,7 @@ print(topSandy[1:20,])
 
 
 # restaurant inspection database
-restaurant = read.csv("~/Desktop/DOHMH_New_York_City_Restaurant_Inspection_Results.csv")
+restaurant = read.csv("data/DOHMH_New_York_City_Restaurant_Inspection_Results.csv")
 
 # STEP 1
 # variable for year-month-zipcode combination
